@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import UserContext from "@/context/UserContext";
-export function LeftBar() {
+
+export default function LeftBar() {
   const { token, updateToken } = useContext(UserContext);
 
   const handleLogout = () => {

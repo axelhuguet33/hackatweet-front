@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-export function Tweet() {
+
+export default function Tweet() {
   return (
     <>
       <div className="text-white bg-transparent flex font-semibold border-b-2 border-[#39414b] p-3 flex-col">

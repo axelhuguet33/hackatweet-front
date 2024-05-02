@@ -1,4 +1,4 @@
-export function Trends() {
+export default function Trends() {
   return (
     <>
       <div className="bg-[#151d26] text-white w-4/12 font-semibold ">
