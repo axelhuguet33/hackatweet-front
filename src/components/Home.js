@@ -1,6 +1,15 @@
 import Image from "next/image";
 import { Tweet } from "./Tweets";
+import { useContext } from "react";
+import UserContext from "@/context/UserContext";
+
 function Home() {
+  const { token, updateToken } = useContext(UserContext);
+
+  const handleLogout = () => {
+    updateToken("");
+  };
+
   return (
     <div className="flex h-screen font-verdana">
       <div className="bg-[#151d26] w-3/12 flex flex-col justify-between p-6 ">
@@ -25,7 +34,10 @@ function Home() {
               <p className="text-xs text-[#65717e]">@ChatonCena</p>
             </div>
           </div>
-          <button className="w-24 h-9 bg-transparent text-xs text-white rounded-2xl border-2 font-semibold">
+          <button
+            className="w-24 h-9 bg-transparent text-xs text-white rounded-2xl border-2 font-semibold"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>
