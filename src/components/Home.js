@@ -3,6 +3,8 @@ import { Tweet } from "./Tweets";
 import { useContext } from "react";
 import UserContext from "@/context/UserContext";
 
+import { Trends } from "./Trends";
+import Link from "next/link";
 function Home() {
   const { token, updateToken } = useContext(UserContext);
 
@@ -13,13 +15,15 @@ function Home() {
   return (
     <div className="flex h-screen font-verdana">
       <div className="bg-[#151d26] w-3/12 flex flex-col justify-between p-6 ">
-        <Image
-          src="/rettiwt.png"
-          alt="logo Twitter"
-          className=""
-          width={50}
-          height={40}
-        />
+        <Link href="/home">
+          <Image
+            src="/rettiwt.png"
+            alt="logo Twitter"
+            className="hover:cursor-pointer"
+            width={50}
+            height={40}
+          />
+        </Link>
         <div className="flex flex-col gap-y-3">
           <div className="text-white bg-transparent flex font-semibold">
             <Image
@@ -58,26 +62,9 @@ function Home() {
         </div>
         <div className="text-white h-3/4 border-t-2 border-[#39414b] flex flex-col overflow-y-scroll ">
           <Tweet></Tweet>
-          <Tweet></Tweet>
-          <Tweet></Tweet>
-          <Tweet></Tweet>
-          <Tweet></Tweet>
-          <Tweet></Tweet>
         </div>
       </div>
-      <div className="bg-[#151d26] text-white w-4/12 font-semibold ">
-        <h4 className="p-5 text-xl">Trends</h4>
-        <div className="bg-[#1b232c] m-4 px-4 py-1">
-          <div className="my-4 py-2">
-            <div className="text-base">#jesuistropchaud</div>
-            <div className="text-xs text-[#65717e]">02 tweets</div>
-          </div>
-          <div>
-            <div className="text-base">#jesuistropchaude</div>
-            <div className="text-xs text-[#65717e]">18009 tweets</div>
-          </div>
-        </div>
-      </div>
+      <Trends />
     </div>
   );
 }
