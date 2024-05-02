@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Home from "@/components/Home";
 import Login from "@/components/Login";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import UserContext from "@/context/UserContext";
+import { useContext } from "react";
 
 export default function HomePage() {
-  return <Home></Home>;
+  const { token } = useContext(UserContext);
+  return <>{token ? <Home /> : <Login />}</>;
 }
