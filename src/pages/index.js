@@ -13,5 +13,5 @@ export default function HomePage() {
     if (!token) router.push("/login");
   }, [token]);
 
-  return <>{token ? <Home /> : <Login />}</>;
+  return <Home />;
 }

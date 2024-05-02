@@ -6,21 +6,25 @@ export default UserContext;
 
 export const UserContextProvider = ({ children }) => {
   const [token, setToken] = useState("");
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) setToken(localStorage.getItem("token"));
-    else setToken("");
-  }, []);
+  const [loading, setLoading] = useState(true);
 
   const updateToken = (token) => {
     setToken(token);
     localStorage.setItem("token", token);
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("token"))
+      updateToken(localStorage.getItem("token"));
+    else updateToken("");
+    setLoading(false);
+  }, []);
+
   return (
     <UserContext.Provider
       value={{
         token,
+        loading,
         updateToken,
       }}
     >

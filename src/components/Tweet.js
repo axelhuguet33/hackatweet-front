@@ -28,9 +28,12 @@ export default function Tweet() {
           consequuntur impedit!
         </div>
         <div className="flex text-xs p-2 gap-2 items-center">
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={faHeart} className="size-4 cursor-pointer" />
           <span>0</span>
-          <FontAwesomeIcon icon={faTrashCan} />
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            className="size-4 cursor-pointer"
+          />
         </div>
       </div>
     </>

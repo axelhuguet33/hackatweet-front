@@ -1,5 +1,5 @@
 import { Trends } from "./Trends";
-import { Tweet } from "./Tweets";
+import { Tweet } from "./Tweet";
 import { LeftBar } from "./LeftBar";
 export function Search() {
   return (

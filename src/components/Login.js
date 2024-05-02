@@ -3,7 +3,7 @@ import Modal from "./Modal";
 
 export default function Login() {
   return (
-    <div className="h-screen flex">
+    <div className=" h-screen flex">
       <div className="relative w-2/5">
         <Image
           src="/fondLogin.jpeg"

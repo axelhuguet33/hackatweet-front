@@ -20,12 +20,19 @@ function Modal({ type }) {
     ).then((r) => r.json());
     if (response.result) {
       updateToken(response.token);
+      setFirstName("");
+      setUsername("");
+      setPassword("");
     } else {
       alert(response.error);
     }
-    setFirstName("");
-    setUsername("");
-    setPassword("");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleClick();
+    }
   };
 
   return (
@@ -42,7 +49,8 @@ function Modal({ type }) {
       </button>
       <dialog
         id={`${type}-modal`}
-        className="modal bg-[#151d27] text-white rounded-2xl"
+        className="modal bg-[#151d27] text-white rounded-2xl backdrop:bg-black/50"
+        onKeyDown={(e) => handleKeyDown(e)}
       >
         <div className="modal-box">
           <form
@@ -67,6 +75,7 @@ function Modal({ type }) {
             </h3>
             {type === "Sign up" ? (
               <input
+                autoFocus
                 type="text"
                 className="w-60 bg-transparent border-2 p-2 rounded border-[#5d6671]"
                 placeholder="Firstname"
@@ -77,6 +86,7 @@ function Modal({ type }) {
               ></input>
             ) : null}
             <input
+              autoFocus
               type="text"
               className=" w-60 bg-transparent border-2 p-2 rounded border-[#5d6671]"
               placeholder="Username"

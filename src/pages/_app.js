@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
         <title>Hackatweet</title>
       </Head>
       <UserContextProvider>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </UserContextProvider>
     </>
   );
