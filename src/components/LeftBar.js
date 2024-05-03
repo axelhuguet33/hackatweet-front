@@ -32,8 +32,8 @@ export default function LeftBar() {
                   src={!!userData && userData.imageUrl}
                   alt="Profil picture"
                   className="size-11"
-                  width={50}
-                  height={50}
+                  width={150}
+                  height={150}
                 />
               </div>
               <div className="p-2">

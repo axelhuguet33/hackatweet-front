@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Trends() {
+export default function Trends({ trigger }) {
   const [hashtags, setHashTags] = useState({});
   const router = useRouter();
+
   useEffect(() => {
     fetch("http://localhost:3000/tweets/hashtags")
       .then((r) => r.json())
       .then((data) => setHashTags(data.hashtags));
-  }, []);
+  }, [trigger]);
+
   return (
     <>
       <div className="bg-[#151d26] text-white w-4/12 font-semibold ">
