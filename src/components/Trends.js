@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Trends() {
+export default function Trends({ trigger }) {
   const [hashtags, setHashTags] = useState({});
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function Trends() {
       setHashTags(hashtagsData);
     };
     getHashtags();
-  }, []);
+  }, [trigger]);
 
   return (
     <>

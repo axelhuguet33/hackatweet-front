@@ -1,7 +1,7 @@
 import UserContext from "@/context/UserContext";
 import { useContext, useState } from "react";
 
-export default function TweetInput({ setTweetsInput }) {
+export default function TweetInput({ setTrigger }) {
   const { token } = useContext(UserContext);
   const [count, setCount] = useState(0);
   const [content, setContent] = useState("");
@@ -13,9 +13,9 @@ export default function TweetInput({ setTweetsInput }) {
       body: JSON.stringify({ token, content }),
     };
     await fetch("http://localhost:3000/tweets", options);
-    setTweetsInput([]);
     setContent("");
     setCount(0);
+    setTrigger((prevTrigger) => !prevTrigger);
   };
 
   return (
