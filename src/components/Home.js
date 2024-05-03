@@ -23,16 +23,18 @@ function Home() {
     setTrigger(!trigger);
   };
 
-  const tweetsList = tweetsData.map((data, i) => {
-    return (
-      <Tweet
-        key={i}
-        {...data}
-        deleteTweet={deleteTweet}
-        setTrigger={setTrigger}
-      />
-    );
-  });
+  const tweetsList = tweetsData
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .map((data, i) => {
+      return (
+        <Tweet
+          key={i}
+          {...data}
+          deleteTweet={deleteTweet}
+          setTrigger={setTrigger}
+        />
+      );
+    });
   return (
     <div className="flex h-screen font-verdana">
       <LeftBar></LeftBar>

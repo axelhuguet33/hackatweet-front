@@ -7,8 +7,6 @@ export default function LoginPage() {
   const router = useRouter();
   const { token } = useContext(UserContext);
 
-  console.log("LoginPage has been re-rendered");
-
   useEffect(() => {
     if (token) router.push("/");
   }, [token]);

@@ -17,7 +17,6 @@ export default function Trends({ trigger }) {
         <h4 className="p-5 text-xl">Trends</h4>
         <div className="bg-[#1b232c] m-4 rounded-lg">
           {Object.keys(hashtags).map((hashtag, i, arr) => {
-            console.log(i);
             return (
               <div
                 key={i}

@@ -13,17 +13,20 @@ export default function Tweet(props) {
       Math.floor((duration / (1000 * 60 * 60 * 24)) % 24),
       Math.floor((duration / (1000 * 60 * 60)) % 24),
       Math.floor((duration / (1000 * 60)) % 60),
-      Math.floor((duration / 1000) % 60),
     ];
-    const timeFrame = ["day", "hour", "minute", "second"];
+    const timeFrame = ["day", "hour", "minute"];
     const displayTime = time.find((e) => e !== 0);
-    return `${displayTime} ${
-      timeFrame[time.findIndex((e) => e === displayTime)]
-    }${displayTime > 1 ? "s" : ""} `;
+    return displayTime
+      ? `${displayTime} ${timeFrame[time.findIndex((e) => e === displayTime)]}${
+          displayTime > 1 ? "s" : ""
+        } `
+      : "a few seconds";
   }
 
   useEffect(() => {
-    setTimePassed(msToTime(Date.now() - Date.parse(props.createdAt)));
+    const now = Date.now();
+    console.log(now);
+    setTimePassed(msToTime(now - Date.parse(props.createdAt)));
   }, []);
 
   const handleLike = async () => {

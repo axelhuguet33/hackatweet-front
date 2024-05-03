@@ -9,8 +9,6 @@ export const UserContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState({});
 
-  console.log("UserContext has been re-rendered");
-
   const updateToken = (token) => {
     setToken(token);
     setLoading(true);

@@ -7,8 +7,6 @@ export default function HomePage() {
   const router = useRouter();
   const { token } = useContext(UserContext);
 
-  console.log("HomePage has been re-rendered");
-
   useEffect(() => {
     if (!token) router.push("/login");
   }, [token]);

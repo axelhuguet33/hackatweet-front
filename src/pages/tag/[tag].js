@@ -13,7 +13,6 @@ export default function Hashtag() {
       .then((r) => r.json())
       .then((data) => setTweetsData(data.allTweets));
   }, []);
-  console.log(tweetsData);
   const tweetsList = tweetsData.map((data, i) => {
     if (data.hashtags.includes(tag)) {
       return <Tweet key={i} {...data} />;

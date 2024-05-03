@@ -6,8 +6,6 @@ import UserContext from "@/context/UserContext";
 export default function LeftBar() {
   const { updateToken, userData } = useContext(UserContext);
 
-  console.log("Left Bar has been re-rendered");
-
   const handleLogout = () => {
     updateToken(null);
   };
