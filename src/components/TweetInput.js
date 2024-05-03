@@ -12,7 +12,7 @@ export default function TweetInput({ setTrigger }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token, content }),
     };
-    await fetch("http://localhost:3000/tweets", options);
+    await fetch("https://hackatweet-back-theta.vercel.app/tweets", options);
     setContent("");
     setCount(0);
     setTrigger((prevTrigger) => !prevTrigger);

@@ -9,7 +9,7 @@ export default function Hashtag() {
   const { tag } = router.query;
 
   useEffect(() => {
-    fetch("http://localhost:3000/tweets")
+    fetch("https://hackatweet-back-theta.vercel.app/tweets")
       .then((r) => r.json())
       .then((data) => setTweetsData(data.allTweets));
   }, []);

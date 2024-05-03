@@ -15,7 +15,9 @@ function Modal({ type }) {
       body: JSON.stringify({ firstName, username, password }),
     };
     const response = await fetch(
-      `http://localhost:3000/users/${type === "Sign up" ? "signup" : "signin"}`,
+      `https://hackatweet-back-theta.vercel.app/users/${
+        type === "Sign up" ? "signup" : "signin"
+      }`,
       options
     ).then((r) => r.json());
     if (response.result) {

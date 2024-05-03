@@ -8,7 +8,7 @@ function Home() {
   const [trigger, setTrigger] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/tweets")
+    fetch("https://hackatweet-back-theta.vercel.app/tweets")
       .then((response) => response.json())
       .then((data) => {
         setTweetsData(data.allTweets);
@@ -19,7 +19,10 @@ function Home() {
     const options = {
       method: "DELETE",
     };
-    await fetch(`http://localhost:3000/tweets/${id}`, options);
+    await fetch(
+      `https://hackatweet-back-theta.vercel.app/tweets/${id}`,
+      options
+    );
     setTrigger(!trigger);
   };
 

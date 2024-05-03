@@ -21,9 +21,9 @@ export const UserContextProvider = ({ children }) => {
     const getUserData = async () => {
       if (localStorage.getItem("token")) {
         setToken(localStorage.getItem("token"));
-        const data = await fetch(`http://localhost:3000/users/${token}`).then(
-          (r) => r.json()
-        );
+        const data = await fetch(
+          `https://hackatweet-back-theta.vercel.app/users/${token}`
+        ).then((r) => r.json());
         setUserData(data.user);
         setLoading(false);
       }

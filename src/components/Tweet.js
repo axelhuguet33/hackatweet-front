@@ -35,7 +35,10 @@ export default function Tweet(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ _id: props._id, token }),
     };
-    await fetch("http://localhost:3000/tweets/likes", options);
+    await fetch(
+      "https://hackatweet-back-theta.vercel.app/tweets/likes",
+      options
+    );
     props.setTrigger((prev) => !prev);
   };
 

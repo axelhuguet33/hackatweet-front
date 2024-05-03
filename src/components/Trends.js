@@ -6,7 +6,7 @@ export default function Trends({ trigger }) {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http://localhost:3000/tweets/hashtags")
+    fetch("https://hackatweet-back-theta.vercel.app/tweets/hashtags")
       .then((r) => r.json())
       .then((data) => setHashTags(data.hashtags));
   }, [trigger]);
