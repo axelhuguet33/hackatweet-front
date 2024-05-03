@@ -21,7 +21,7 @@ export default function Login() {
           height={448}
         />
       </div>
-      <div className="bg-[#151d27] text-white w-3/5 p-9 font-montheavy">
+      <div className="bg-[#151d27] text-white w-3/5 p-9 font-verdana">
         <Image
           src="/rettiwt.png"
           alt="logo Twitter"
@@ -29,10 +29,10 @@ export default function Login() {
           height={448}
           className="w-[50px] h-auto"
         />
-        <h1 className="text-7xl my-14 leading-snug">
+        <h1 className="text-7xl my-14 leading-snug font-montheavy">
           See what's <br /> happening
         </h1>
-        <p className="text-3xl mb-6">Join Hackatweet today.</p>
+        <p className="text-3xl mb-6 font-montheavy">Join Hackatweet today.</p>
         <Modal type="Sign up" />
         <p className="my-3">Already have an account?</p>
         <Modal type="Sign in" />
