@@ -19,7 +19,7 @@ export default function TweetInput({ setTrigger }) {
   };
 
   return (
-    <div className="p-5 h-1/4 border-[#39414b] flex flex-col">
+    <div className="p-5 flex flex-col h-1/5">
       <h4 className=" text-xl font-semibold text-white self-start">Home</h4>
       <textarea
         className="mx-6 bg-transparent border-b-2 p-2 rounded border-[#5d6671] text-white"

@@ -36,66 +36,66 @@ export default function Tweet(props) {
     props.setTrigger((prev) => !prev);
   };
 
-  const content = props.content.split(/(#\w+)/g).map((fragment) => {
+  const content = props.content.split(/(#\w+)/g).map((fragment, i) => {
     if (fragment[0] === "#") {
-      return <span className="text-blue-500">{fragment}</span>;
+      return (
+        <span key={i} className="text-blue-500">
+          {fragment}
+        </span>
+      );
     } else {
       return fragment;
     }
   });
 
   return (
-    <>
-      <div className="text-white bg-transparent flex font-semibold border-b-2 border-[#39414b] p-3 flex-col">
-        <div className="flex flex-row">
-          <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">
-            {props.user ? (
-              <Image
-                src={props.user.imageUrl}
-                alt="Profil picture"
-                className="size-11"
-                width={150}
-                height={150}
-              />
-            ) : (
-              <FontAwesomeIcon icon={faUser} className="size-8" />
-            )}
-          </div>
-          <div className="p-2 flex flex-row text-xs">
-            <p>
-              {props.user ? props.user.firstName : "Utilisateur Hackatweet"}
-            </p>
-            <p className="text-xs text-[#65717e]">
-              @{props.user ? props.user.username : "Utilisateur Hackatweet"}
-              <span> · {timePassed}</span>
-            </p>
-          </div>
-        </div>
-        <div className="text-xs">{content}</div>
-        <div className="flex text-xs p-2 gap-2 items-center">
-          <FontAwesomeIcon
-            icon={faHeart}
-            className={`size-4 cursor-pointer ${
-              props.likes.includes(token) ? "text-[#f71671]" : null
-            }`}
-            onClick={() => handleLike()}
-          />
-          <span
-            className={`${
-              props.likes.includes(token) ? "text-[#f71671]" : null
-            }`}
-          >
-            {props.likes.length}
-          </span>
-          {props.user && token === props.user.token ? (
-            <FontAwesomeIcon
-              icon={faTrashCan}
-              className="size-4 cursor-pointer"
-              onClick={() => props.deleteTweet(props._id)}
+    <div className="text-white bg-transparent flex border-t-2 border-[#39414b] p-5 flex-col gap-4">
+      <div className="flex flex-row items-center">
+        <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">
+          {props.user ? (
+            <Image
+              src={props.user.imageUrl}
+              alt="Profil picture"
+              className="size-11"
+              width={150}
+              height={150}
             />
-          ) : null}
+          ) : (
+            <FontAwesomeIcon icon={faUser} className="size-8" />
+          )}
+        </div>
+        <div className="p-2 flex flex-row text-[0.8rem] font-semibold">
+          <p className="font-montheavy pr-1">
+            {props.user ? props.user.firstName : "Utilisateur Hackatweet"}
+          </p>
+          <p className="text-xs text-[#65717e]">
+            @{props.user ? props.user.username : "Utilisateur Hackatweet"}
+            <span> · {timePassed}</span>
+          </p>
         </div>
       </div>
-    </>
+      <div className="text-xs">{content}</div>
+      <div className="flex text-xs gap-2 items-center">
+        <FontAwesomeIcon
+          icon={faHeart}
+          className={`size-4 cursor-pointer ${
+            props.likes.includes(token) ? "text-[#f71671]" : null
+          }`}
+          onClick={() => handleLike()}
+        />
+        <span
+          className={`${props.likes.includes(token) ? "text-[#f71671]" : null}`}
+        >
+          {props.likes.length}
+        </span>
+        {props.user && token === props.user.token ? (
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            className="size-4 cursor-pointer"
+            onClick={() => props.deleteTweet(props._id)}
+          />
+        ) : null}
+      </div>
+    </div>
   );
 }

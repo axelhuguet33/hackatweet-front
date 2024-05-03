@@ -36,9 +36,9 @@ function Home() {
   return (
     <div className="flex h-screen font-verdana">
       <LeftBar></LeftBar>
-      <div className="bg-[#151d26] w-5/12 border-2 border-[#39414b]">
+      <div className="bg-[#151d26] w-5/12 h-screen border-2 border-[#39414b]">
         <TweetInput setTrigger={setTrigger} />
-        <div className="text-white h-3/4 border-t-2 border-[#39414b] flex flex-col overflow-y-auto ">
+        <div className="text-white h-4/5 flex flex-col overflow-y-auto ">
           {tweetsList}
         </div>
       </div>

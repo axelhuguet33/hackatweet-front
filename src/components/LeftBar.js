@@ -25,7 +25,7 @@ export default function LeftBar() {
               height={448}
             />
           </Link>
-          <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-7">
             <div className="text-white flex font-semibold items-center">
               <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">
                 <Image
@@ -37,12 +37,12 @@ export default function LeftBar() {
                 />
               </div>
               <div className="p-2">
-                <p>{userData.firstName}</p>
+                <p className="mb-1">{userData.firstName}</p>
                 <p className="text-xs text-[#65717e]">@{userData.username}</p>
               </div>
             </div>
             <button
-              className="w-24 h-9 bg-transparent text-xs text-white rounded-2xl border-2 font-semibold"
+              className="w-24 h-7 bg-transparent text-xs text-white rounded-2xl border-[#39414b] border-2 font-semibold"
               onClick={handleLogout}
             >
               Logout

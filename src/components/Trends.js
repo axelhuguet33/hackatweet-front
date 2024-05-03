@@ -15,13 +15,16 @@ export default function Trends({ trigger }) {
     <>
       <div className="bg-[#151d26] text-white w-4/12 font-semibold ">
         <h4 className="p-5 text-xl">Trends</h4>
-        <div className="bg-[#1b232c] m-4">
-          {Object.keys(hashtags).map((hashtag, i) => {
+        <div className="bg-[#1b232c] m-4 rounded-lg">
+          {Object.keys(hashtags).map((hashtag, i, arr) => {
+            console.log(i);
             return (
               <div
                 key={i}
                 onClick={() => router.push(`/tag/${hashtag}`)}
-                className=" py-4 px-4 hover:bg-[#232d3b] cursor-pointer"
+                className={`py-4 px-4 hover:bg-[#232d3b] cursor-pointer ${
+                  i === 0 && "rounded-t-lg"
+                } ${i === arr.length - 1 && "rounded-b-lg"}`}
               >
                 <div className="text-base">#{hashtag}</div>
                 <div className="text-xs text-[#65717e]">
