@@ -30,7 +30,7 @@ export default function Login() {
           className="w-[50px] h-auto"
         />
         <h1 className="text-7xl my-14 leading-snug font-montheavy">
-          See what's <br /> happening
+          See what&apos;s <br /> happening
         </h1>
         <p className="text-3xl mb-6 font-montheavy">Join Hackatweet today.</p>
         <Modal type="Sign up" />
