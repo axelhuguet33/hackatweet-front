@@ -17,14 +17,12 @@ export default function LeftBar() {
         const data = await fetch(`http://localhost:3000/users/${token}`).then(
           (r) => r.json()
         );
-        console.log(data);
         setUserData(data.user);
       }
     };
     getUserData();
   }, [token]);
 
-  console.log(userData);
   return (
     <>
       <div className="bg-[#151d26] w-3/12 flex flex-col justify-between p-6 ">
