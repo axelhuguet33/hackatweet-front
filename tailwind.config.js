@@ -15,6 +15,7 @@ module.exports = {
     },
     fontFamily: {
       verdana: ["Verdana", "sans-serif"],
+      montheavy: ["MontHeavy", "sans-serif"],
     },
   },
   plugins: [],

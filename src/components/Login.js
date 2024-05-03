@@ -21,7 +21,7 @@ export default function Login() {
           height={448}
         />
       </div>
-      <div className="bg-[#151d27] text-white w-3/5 p-9 font-verdana">
+      <div className="bg-[#151d27] text-white w-3/5 p-9 font-montheavy">
         <Image
           src="/rettiwt.png"
           alt="logo Twitter"
