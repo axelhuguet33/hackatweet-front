@@ -13,7 +13,6 @@ function Home() {
         setTweetsData(data.allTweets);
       });
   }, []);
-  // console.log("date du tweets", tweetsData[0].createdAt);
 
   const tweetsList = tweetsData.map((data, i) => {
     return <Tweet key={i} {...data} />;

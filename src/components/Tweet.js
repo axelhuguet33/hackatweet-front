@@ -33,15 +33,7 @@ export default function Tweet(props) {
     return time;
   }
   useEffect(() => {
-    let dateNow = Date.now();
-    console.log("avant le parse ", dateNow);
-    console.log("aujourd'hui en millisecondes :", dateNow);
-
-    let tweetDate = Date.parse(props.createdAt);
-
-    console.log("hier en millisecondes :", tweetDate);
-    console.log("temps écoulé en mms : ", msToTime(dateNow - tweetDate));
-    setTimePassed(msToTime(dateNow - tweetDate));
+    setTimePassed(msToTime(Date.now() - Date.parse(props.createdAt)));
   }, []);
 
   return (
