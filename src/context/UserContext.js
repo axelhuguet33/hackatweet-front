@@ -7,24 +7,37 @@ export default UserContext;
 export const UserContextProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(true);
+  const [userData, setUserData] = useState({});
+
+  console.log("UserContext has been re-rendered");
 
   const updateToken = (token) => {
     setToken(token);
-    localStorage.setItem("token", token);
+    setLoading(true);
+    token
+      ? localStorage.setItem("token", token)
+      : localStorage.removeItem("token");
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token"))
-      updateToken(localStorage.getItem("token"));
-    else updateToken("");
-    setLoading(false);
-  }, []);
+    const getUserData = async () => {
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+        const data = await fetch(`http://localhost:3000/users/${token}`).then(
+          (r) => r.json()
+        );
+        setUserData(data.user);
+        setLoading(false);
+      }
+    };
+    if (loading) getUserData();
+  }, [loading, token]);
 
   return (
     <UserContext.Provider
       value={{
         token,
-        loading,
+        userData,
         updateToken,
       }}
     >
