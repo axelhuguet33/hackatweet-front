@@ -1,11 +1,13 @@
-import Tweet from "./Tweet";
-import LeftBar from "./LeftBar";
-import Trends from "./Trends";
-import TweetInput from "./TweetInput";
 import { useState, useEffect } from "react";
-function Home() {
+import Tweet from "@/components/Tweet";
+
+export default function TweetContainer({
+  tweetRefresh,
+  setTrendsRefresh,
+  setTweetRefresh,
+}) {
+  console.log("TweetContainer render");
   const [tweetsData, setTweetsData] = useState([]);
-  const [trigger, setTrigger] = useState(true);
 
   useEffect(() => {
     fetch("https://hackatweet-back-theta.vercel.app/tweets")
@@ -13,7 +15,7 @@ function Home() {
       .then((data) => {
         setTweetsData(data.allTweets);
       });
-  }, [trigger]);
+  }, [tweetRefresh]);
 
   const deleteTweet = async (id) => {
     const options = {
@@ -23,7 +25,8 @@ function Home() {
       `https://hackatweet-back-theta.vercel.app/tweets/${id}`,
       options
     );
-    setTrigger(!trigger);
+    setTrendsRefresh((prev) => !prev);
+    setTweetRefresh((prev) => !prev);
   };
 
   const tweetsList = tweetsData
@@ -33,23 +36,16 @@ function Home() {
         <Tweet
           key={i}
           {...data}
+          className={i === 0 ? "" : "border-t-2"}
           deleteTweet={deleteTweet}
-          setTrigger={setTrigger}
+          setTweetRefresh={setTweetRefresh}
         />
       );
     });
+
   return (
-    <div className="flex h-screen font-verdana">
-      <LeftBar></LeftBar>
-      <div className="bg-[#151d26] w-5/12 h-screen border-2 border-[#39414b]">
-        <TweetInput setTrigger={setTrigger} />
-        <div className="text-white h-4/5 flex flex-col overflow-y-auto ">
-          {tweetsList}
-        </div>
-      </div>
-      <Trends trigger={trigger} />
+    <div className="text-white h-[70%] flex flex-col overflow-y-auto ">
+      {tweetsList}
     </div>
   );
 }
-
-export default Home;

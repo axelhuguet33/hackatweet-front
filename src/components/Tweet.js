@@ -4,42 +4,42 @@ import { faHeart, faTrashCan, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/UserContext";
 
-export default function Tweet(props) {
+export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
   const [timePassed, setTimePassed] = useState("");
-  const { token } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
 
   function msToTime(duration) {
     let time = [
-      Math.floor((duration / (1000 * 60 * 60 * 24)) % 24),
-      Math.floor((duration / (1000 * 60 * 60)) % 24),
-      Math.floor((duration / (1000 * 60)) % 60),
+      {
+        unit: "day",
+        value: Math.floor((duration / (1000 * 60 * 60 * 24)) % 24),
+      },
+      { unit: "hour", value: Math.floor((duration / (1000 * 60 * 60)) % 24) },
+      { unit: "minute", value: Math.floor((duration / (1000 * 60)) % 60) },
     ];
-    const timeFrame = ["day", "hour", "minute"];
-    const displayTime = time.find((e) => e !== 0);
+    const displayTime = time.find((e) => e.value !== 0);
     return displayTime
-      ? `${displayTime} ${timeFrame[time.findIndex((e) => e === displayTime)]}${
-          displayTime > 1 ? "s" : ""
+      ? `${displayTime.value} ${displayTime.unit}${
+          displayTime.value > 1 ? "s" : ""
         } `
       : "a few seconds";
   }
 
   useEffect(() => {
-    const now = Date.now();
-    console.log(now);
-    setTimePassed(msToTime(now - Date.parse(props.createdAt)));
+    setTimePassed(msToTime(new Date() - Date.parse(props.createdAt)));
   }, []);
 
   const handleLike = async () => {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ _id: props._id, token }),
+      body: JSON.stringify({ _id: props._id, token: userData.token }),
     };
     await fetch(
       "https://hackatweet-back-theta.vercel.app/tweets/likes",
       options
     );
-    props.setTrigger((prev) => !prev);
+    setTweetRefresh((prev) => !prev);
   };
 
   const content = props.content.split(/(#\w+)/g).map((fragment, i) => {
@@ -55,7 +55,9 @@ export default function Tweet(props) {
   });
 
   return (
-    <div className="text-white bg-transparent flex border-t-2 border-[#39414b] p-5 flex-col gap-4">
+    <div
+      className={`text-white bg-transparent flex ${props.className} border-[#39414b] p-5 flex-col gap-4`}
+    >
       <div className="flex flex-row items-center">
         <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">
           {props.user ? (
@@ -85,20 +87,22 @@ export default function Tweet(props) {
         <FontAwesomeIcon
           icon={faHeart}
           className={`size-4 cursor-pointer ${
-            props.likes.includes(token) ? "text-[#f71671]" : null
+            props.likes.includes(userData.token) ? "text-[#f71671]" : null
           }`}
           onClick={() => handleLike()}
         />
         <span
-          className={`${props.likes.includes(token) ? "text-[#f71671]" : null}`}
+          className={`${
+            props.likes.includes(userData.token) ? "text-[#f71671]" : null
+          }`}
         >
           {props.likes.length}
         </span>
-        {props.user && token === props.user.token ? (
+        {props.user && userData.token === props.user.token ? (
           <FontAwesomeIcon
             icon={faTrashCan}
             className="size-4 cursor-pointer"
-            onClick={() => props.deleteTweet(props._id)}
+            onClick={() => deleteTweet(props._id)}
           />
         ) : null}
       </div>

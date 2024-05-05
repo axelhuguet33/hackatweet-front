@@ -5,38 +5,39 @@ const UserContext = createContext();
 export default UserContext;
 
 export const UserContextProvider = ({ children }) => {
-  const [token, setToken] = useState("");
+  console.log("UserContextProvider render");
   const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
 
-  const updateToken = (token) => {
-    setToken(token);
-    setLoading(true);
+  const updateUser = (token) => {
     token
       ? localStorage.setItem("token", token)
       : localStorage.removeItem("token");
+    setLoading(true);
   };
 
   useEffect(() => {
     const getUserData = async () => {
-      if (localStorage.getItem("token")) {
-        setToken(localStorage.getItem("token"));
+      const token = localStorage.getItem("token");
+      if (token) {
         const data = await fetch(
           `https://hackatweet-back-theta.vercel.app/users/${token}`
         ).then((r) => r.json());
         setUserData(data.user);
-        setLoading(false);
+      } else {
+        setUserData(null);
       }
+      setLoading(false);
     };
     if (loading) getUserData();
-  }, [loading, token]);
+  }, [loading]);
 
   return (
     <UserContext.Provider
       value={{
-        token,
         userData,
-        updateToken,
+        updateUser,
+        loading,
       }}
     >
       {children}

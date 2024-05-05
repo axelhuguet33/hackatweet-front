@@ -6,7 +6,7 @@ function Modal({ type }) {
   const [firstName, setFirstName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { updateToken } = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
 
   const handleClick = async () => {
     const options = {
@@ -21,10 +21,7 @@ function Modal({ type }) {
       options
     ).then((r) => r.json());
     if (response.result) {
-      updateToken(response.token);
-      setFirstName("");
-      setUsername("");
-      setPassword("");
+      updateUser(response.token);
     } else {
       alert(response.error);
     }
