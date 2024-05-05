@@ -25,7 +25,7 @@ export default function TweetInput({ setTrendsRefresh, setTweetRefresh }) {
   };
 
   return (
-    <div className="p-5 flex flex-col text-white justify-between h-[30%] border-[#39414b] border-b-2">
+    <div className="p-5 flex flex-col text-white justify-between h-[20%] md:h-[30%] border-[#39414b] border-b-2">
       <h4 className="text-xl font-semibold ">Home</h4>
       <textarea
         className="mx-6 bg-transparent border-b-2 p-2 border-[#5d6671] "

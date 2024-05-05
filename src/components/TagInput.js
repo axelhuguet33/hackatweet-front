@@ -15,11 +15,11 @@ export default function TagInput({ tag }) {
       <input
         className="mx-6 mt-5 bg-[#1b232c] p-2 rounded-full text-white"
         placeholder="Search Hashtag?"
-        value={`#${tagInput}`}
+        value={tagInput}
         onChange={(e) => {
-          e.target.value.slice(1)
-            ? router.push(`/tag/${e.target.value.slice(1)}`)
-            : router.push("/");
+          e.target.value
+            ? router.push(`/tag/%23${e.target.value.slice(1)}`)
+            : "";
         }}
       />
     </div>

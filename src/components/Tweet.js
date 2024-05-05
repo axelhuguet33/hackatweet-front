@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faTrashCan, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "@/context/UserContext";
+import Link from "next/link";
 
 export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
   const [timePassed, setTimePassed] = useState("");
@@ -48,9 +49,13 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
   const content = props.content.split(/(#\w+)/g).map((fragment, i) => {
     if (fragment[0] === "#") {
       return (
-        <span key={i} className="text-blue-500">
+        <Link
+          key={i}
+          className="text-blue-500"
+          href={`/tag/%23${fragment.slice(1)}`}
+        >
           {fragment}
-        </span>
+        </Link>
       );
     } else {
       return fragment;
@@ -96,7 +101,7 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
         </div>
       </div>
       <div className="text-xs">{content}</div>
-      <div className="flex text-xs gap-2 items-center">
+      <div className="flex text-xs gap-2 items-center justify-end md:justify-start">
         <FontAwesomeIcon
           icon={faHeart}
           className={`size-4 cursor-pointer ${

@@ -35,9 +35,9 @@ function Modal({ type }) {
   };
 
   return (
-    <div>
+    <div className="flex justify-center md:justify-start">
       <button
-        className={`w-52 h-9 rounded-2xl font-semibold  ${
+        className={`w-72 md:w-52 h-9 rounded-2xl font-semibold  ${
           type === "Sign up"
             ? "bg-sky-500 hover:bg-sky-600"
             : "border-2 bg-transparent text-sky-500  hover:bg-black"

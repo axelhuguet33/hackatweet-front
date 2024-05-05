@@ -23,9 +23,9 @@ export default function HomePage() {
       <h1>Loading...</h1>
     </div>
   ) : (
-    <div className="flex h-screen font-verdana">
+    <div className="flex flex-col md:flex-row h-screen font-verdana">
       <LeftBar></LeftBar>
-      <div className="bg-[#151d26] w-5/12 h-screen border-2 border-[#39414b]">
+      <div className="bg-[#151d26] h-[90%] md:w-5/12 md:h-screen border-2 border-[#39414b]">
         <TweetInput
           setTrendsRefresh={setTrendsRefresh}
           setTweetRefresh={setTweetRefresh}

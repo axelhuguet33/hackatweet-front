@@ -35,7 +35,7 @@ export default function TweetContainer({
   };
 
   const tweetsList = tweetsData
-    .filter((data) => !tag || data.hashtags.includes(tag))
+    .filter((data) => !tag || data.hashtags.includes(tag.slice(1)))
     .map((data, i) => {
       return (
         <Tweet
@@ -51,7 +51,7 @@ export default function TweetContainer({
   return (
     <div
       className={`text-white ${
-        tag ? "h-[80%]" : "h-[70%]"
+        tag ? "h-[80%]" : "h-[80%] md:h-[70%] "
       } flex flex-col overflow-y-auto `}
     >
       {tweetsList}

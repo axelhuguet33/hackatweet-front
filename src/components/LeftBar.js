@@ -12,7 +12,7 @@ export default function LeftBar() {
   };
 
   return (
-    <div className="bg-[#151d26] w-3/12 flex flex-col justify-between p-6 ">
+    <div className="bg-[#151d26] h-[10%] md:h-auto md:w-3/12 flex md:flex-col justify-between p-6 ">
       <Image
         src="/rettiwt.png"
         alt="logo Hackatweet"
@@ -22,7 +22,7 @@ export default function LeftBar() {
         priority
         onClick={() => router.push("/")}
       />
-      <div className="flex flex-col gap-7 text-white font-semibold">
+      <div className="flex items-center md:items-stretch  gap-2 md:flex-col md:gap-7  text-white font-semibold">
         <div className="flex items-center">
           <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">
             <Image
@@ -34,7 +34,7 @@ export default function LeftBar() {
             />
           </div>
           <div className="p-2">
-            <p className="mb-2 ">{userData && userData.firstName}</p>
+            <p className="md:mb-2">{userData && userData.firstName}</p>
             <p className="text-xs text-[#65717e]">
               @{userData && userData.username}
             </p>

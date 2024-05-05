@@ -13,12 +13,12 @@ export default function LoginPage() {
   }, [userData]);
 
   return (
-    <div className=" h-screen flex">
-      <div className="relative w-2/5">
+    <div className=" h-screen flex flex-col md:flex-row">
+      <div className="relative h-1/5 md:w-2/5 md:h-full">
         <Image
           src="/fondLogin.jpeg"
           alt="fondLogin"
-          className="h-full object-cover"
+          className=" h-full md:h-full object-cover"
           width={3225}
           height={2160}
           priority
@@ -26,25 +26,29 @@ export default function LoginPage() {
         <Image
           src="/rettiwt.png"
           alt="logo Twitter"
-          className=" w-[250px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-2/4"
+          className="w-[100px] md:w-[250px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-2/4"
           width={529}
           height={448}
         />
       </div>
-      <div className="bg-[#151d27] text-white w-3/5 p-9 font-verdana">
+      <div className="h-4/5 bg-[#151d27] text-white p-9 font-verdana md:w-3/5 md:h-full">
         <Image
           src="/rettiwt.png"
           alt="logo Twitter"
           width={529}
           height={448}
-          className="w-[50px]"
+          className="hidden md:block md:w-[50px]"
         />
-        <h1 className="text-7xl my-14 leading-snug font-montheavy">
+        <h1 className=" text-5xl text-center md:text-start md:text-7xl my-14 leading-snug font-montheavy">
           See what's <br /> happening
         </h1>
-        <p className="text-3xl mb-6 font-montheavy">Join Hackatweet today.</p>
+        <p className="text-center md:text-start text-2xl mb-20 md:mb-6 font-montheavy">
+          Join Hackatweet today.
+        </p>
         <Modal type="Sign up" />
-        <p className="my-4">Already have an account?</p>
+        <p className=" mt-16 mb-8 md:my-4 text-center  md:text-start">
+          Already have an account?
+        </p>
         <Modal type="Sign in" />
       </div>
     </div>
