@@ -56,7 +56,9 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
 
   return (
     <div
-      className={`text-white bg-transparent flex ${props.className} border-[#39414b] p-5 flex-col gap-4`}
+      className={`text-white bg-transparent flex ${
+        props.borderTop ? "" : "border-t-2"
+      } border-[#39414b] p-5 flex-col gap-4`}
     >
       <div className="flex flex-row items-center">
         <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">

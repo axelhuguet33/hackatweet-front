@@ -5,15 +5,19 @@ export default function TweetContainer({
   tweetRefresh,
   setTrendsRefresh,
   setTweetRefresh,
+  tag,
 }) {
-  console.log("TweetContainer render");
   const [tweetsData, setTweetsData] = useState([]);
 
   useEffect(() => {
     fetch("https://hackatweet-back-theta.vercel.app/tweets")
       .then((response) => response.json())
       .then((data) => {
-        setTweetsData(data.allTweets);
+        setTweetsData(
+          data.allTweets.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          )
+        );
       });
   }, [tweetRefresh]);
 
@@ -30,13 +34,13 @@ export default function TweetContainer({
   };
 
   const tweetsList = tweetsData
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .filter((data) => !tag || data.hashtags.includes(tag))
     .map((data, i) => {
       return (
         <Tweet
           key={i}
           {...data}
-          className={i === 0 ? "" : "border-t-2"}
+          borderTop={i === 0}
           deleteTweet={deleteTweet}
           setTweetRefresh={setTweetRefresh}
         />
@@ -44,7 +48,11 @@ export default function TweetContainer({
     });
 
   return (
-    <div className="text-white h-[70%] flex flex-col overflow-y-auto ">
+    <div
+      className={`text-white ${
+        tag ? "h-[80%]" : "h-[70%]"
+      } flex flex-col overflow-y-auto `}
+    >
       {tweetsList}
     </div>
   );

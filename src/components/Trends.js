@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Trends({ trendsRefresh }) {
-  console.log("Trends render");
   const [hashtags, setHashTags] = useState({});
   const router = useRouter();
 

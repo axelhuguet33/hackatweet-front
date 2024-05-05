@@ -5,7 +5,6 @@ const UserContext = createContext();
 export default UserContext;
 
 export const UserContextProvider = ({ children }) => {
-  console.log("UserContextProvider render");
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
 

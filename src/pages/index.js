@@ -7,7 +7,6 @@ import TweetInput from "@/components/TweetInput";
 import TweetContainer from "@/components/TweetContainer";
 
 export default function HomePage() {
-  console.log("Home Page render");
   const router = useRouter();
   const { userData, loading } = useContext(UserContext);
   const [trendsRefresh, setTrendsRefresh] = useState(true);
