@@ -10,15 +10,16 @@ export default function TweetContainer({
   const [tweetsData, setTweetsData] = useState([]);
 
   useEffect(() => {
-    fetch("https://hackatweet-back-theta.vercel.app/tweets")
-      .then((response) => response.json())
-      .then((data) => {
-        setTweetsData(
-          data.allTweets.sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-          )
-        );
-      });
+    const getTweetsData = async () => {
+      const data = await fetch(
+        "https://hackatweet-back-theta.vercel.app/tweets"
+      )
+        .then((response) => response.json())
+        .then((data) => data.allTweets);
+      data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setTweetsData(data);
+    };
+    getTweetsData();
   }, [tweetRefresh]);
 
   const deleteTweet = async (id) => {
