@@ -13,7 +13,7 @@ export default function LoginPage() {
   }, [userData]);
 
   return (
-    <div className=" h-screen flex flex-col md:flex-row">
+    <div className="h-[100svh] flex flex-col md:flex-row">
       <div className="relative h-1/5 md:w-2/5 md:h-full">
         <Image
           src="/fondLogin.jpeg"

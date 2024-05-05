@@ -16,13 +16,13 @@ export default function LeftBar() {
       <Image
         src="/rettiwt.png"
         alt="logo Hackatweet"
-        className="cursor-pointer w-[50px]"
+        className="cursor-pointer w-[50px] h-[42px]"
         width={529}
         height={448}
         priority
         onClick={() => router.push("/")}
       />
-      <div className="flex items-center md:items-stretch  gap-2 md:flex-col md:gap-7  text-white font-semibold">
+      <div className="flex items-center md:items-stretch gap-2 md:flex-col md:gap-7  text-white font-semibold">
         <div className="flex items-center">
           <div className="size-14 rounded-full bg-sky-900 flex items-center justify-center">
             <Image

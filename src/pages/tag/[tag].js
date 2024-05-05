@@ -16,9 +16,9 @@ export default function Hashtag() {
   }, [tag]);
 
   return (
-    <div className="flex flex-col h-screen md:flex-row font-verdana">
+    <div className="flex flex-col h-[100svh] md:flex-row font-verdana">
       <LeftBar></LeftBar>
-      <div className="bg-[#151d26] h-[90%] md:h-auto md:w-5/12 border-2 border-[#39414b]">
+      <div className="bg-[#151d26] h-[90%] md:h-auto md:w-5/12 md:border-2 border-[#39414b]">
         <TagInput tag={tagInput} />
         <TweetContainer
           tag={tagInput}

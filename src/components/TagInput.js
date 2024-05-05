@@ -10,7 +10,7 @@ export default function TagInput({ tag }) {
   }, [tag]);
 
   return (
-    <div className="p-5 h-[20%] border-[#39414b] border-b-2 flex flex-col">
+    <div className="p-5 h-[20%] border-[#39414b] border-y-2 md:border-b-2 flex flex-col">
       <h4 className=" text-xl font-semibold text-white self-start">Hashtag</h4>
       <input
         className="mx-6 mt-5 bg-[#1b232c] p-2 rounded-full text-white"
