@@ -54,6 +54,8 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
     }
   });
 
+  const isLiked = userData && props.likes.includes(userData.token);
+
   return (
     <div
       className={`text-white bg-transparent flex ${
@@ -89,15 +91,11 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
         <FontAwesomeIcon
           icon={faHeart}
           className={`size-4 cursor-pointer ${
-            props.likes.includes(userData.token) ? "text-[#f71671]" : null
+            isLiked ? "text-[#f71671]" : null
           }`}
           onClick={() => handleLike()}
         />
-        <span
-          className={`${
-            props.likes.includes(userData.token) ? "text-[#f71671]" : null
-          }`}
-        >
+        <span className={`${isLiked ? "text-[#f71671]" : null}`}>
           {props.likes.length}
         </span>
         {props.user && userData.token === props.user.token ? (
