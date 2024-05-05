@@ -76,7 +76,13 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
               height={150}
             />
           ) : (
-            <FontAwesomeIcon icon={faUser} className="size-8" />
+            <Image
+              src="/chad.jpg"
+              alt="Profil picture"
+              className="size-11"
+              width={150}
+              height={150}
+            />
           )}
         </div>
         <div className="p-2 flex flex-row text-[0.8rem] font-semibold">
@@ -101,7 +107,7 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
         <span className={`${isLiked ? "text-[#f71671]" : null}`}>
           {props.likes.length}
         </span>
-        {userData && userData.token === props.user.token ? (
+        {userData && props.user && userData.token === props.user.token ? (
           <FontAwesomeIcon
             icon={faTrashCan}
             className="size-4 cursor-pointer"
