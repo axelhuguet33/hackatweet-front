@@ -33,7 +33,10 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ _id: props._id, token: userData.token }),
+      body: JSON.stringify({
+        _id: props._id,
+        token: userData && userData.token,
+      }),
     };
     await fetch(
       "https://hackatweet-back-theta.vercel.app/tweets/likes",
@@ -98,7 +101,7 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
         <span className={`${isLiked ? "text-[#f71671]" : null}`}>
           {props.likes.length}
         </span>
-        {props.user && userData.token === props.user.token ? (
+        {userData && userData.token === props.user.token ? (
           <FontAwesomeIcon
             icon={faTrashCan}
             className="size-4 cursor-pointer"

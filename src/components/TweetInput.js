@@ -11,7 +11,10 @@ export default function TweetInput({ setTrendsRefresh, setTweetRefresh }) {
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: userData.token, content }),
+        body: JSON.stringify({
+          token: userData && userData.token,
+          content,
+        }),
       };
       await fetch("https://hackatweet-back-theta.vercel.app/tweets", options);
       setContent("");
