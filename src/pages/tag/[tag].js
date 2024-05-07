@@ -1,19 +1,26 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "@/context/UserContext";
 import Trends from "@/components/Trends";
 import LeftBar from "@/components/LeftBar";
 import TweetContainer from "@/components/TweetContainer";
 import TagInput from "@/components/TagInput";
+
 export default function Hashtag() {
   const router = useRouter();
   const { tag } = router.query;
   const [tagInput, setTagInput] = useState(tag);
+  const { userData, loading } = useContext(UserContext);
   const [trendsRefresh, setTrendsRefresh] = useState(true);
   const [tweetRefresh, setTweetRefresh] = useState(true);
 
   useEffect(() => {
-    setTagInput(tag);
-  }, [tag]);
+    if (!userData && !loading) {
+      router.push("/login");
+    } else {
+      setTagInput(tag);
+    }
+  }, [loading, tag]);
 
   return (
     <div className="flex flex-col h-[100svh] md:flex-row font-verdana">
