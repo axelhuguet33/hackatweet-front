@@ -21,7 +21,7 @@ export default function LoginPage() {
           className=" h-full md:h-full object-cover"
           width={3225}
           height={2160}
-          priority
+          priority //charge l'image en amont, empêche le chargement différé
         />
         <Image
           src="/rettiwt.png"
