@@ -11,9 +11,7 @@ export default function TweetContainer({
 
   useEffect(() => {
     const getTweetsData = async () => {
-      const data = await fetch(
-        "https://hackatweet-back-theta.vercel.app/tweets"
-      )
+      const data = await fetch("http://localhost:3000/tweets")
         .then((response) => response.json())
         .then((data) => data.allTweets);
       data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -26,10 +24,7 @@ export default function TweetContainer({
     const options = {
       method: "DELETE",
     };
-    await fetch(
-      `https://hackatweet-back-theta.vercel.app/tweets/${id}`,
-      options
-    );
+    await fetch(`http://localhost:3000/tweets/${id}`, options);
     setTrendsRefresh((prev) => !prev);
     setTweetRefresh((prev) => !prev);
   };

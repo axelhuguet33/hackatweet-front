@@ -39,10 +39,7 @@ export default function Tweet({ deleteTweet, setTweetRefresh, ...props }) {
         token: userData && userData.token,
       }),
     };
-    await fetch(
-      "https://hackatweet-back-theta.vercel.app/tweets/likes",
-      options
-    );
+    await fetch("http://localhost:3000/tweets/likes", options);
     setTweetRefresh((prev) => !prev);
   };
 

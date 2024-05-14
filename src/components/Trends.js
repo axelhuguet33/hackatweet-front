@@ -7,9 +7,7 @@ export default function Trends({ trendsRefresh }) {
 
   useEffect(() => {
     const getHashtags = async () => {
-      const data = await fetch(
-        "https://hackatweet-back-theta.vercel.app/tweets/hashtags"
-      )
+      const data = await fetch("http://localhost:3000/tweets/hashtags")
         .then((r) => r.json())
         .then((data) => data.hashtags);
       setHashtags(data.slice(0, 6));

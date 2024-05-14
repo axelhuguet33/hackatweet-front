@@ -16,7 +16,7 @@ export default function TweetInput({ setTrendsRefresh, setTweetRefresh }) {
           content,
         }),
       };
-      await fetch("https://hackatweet-back-theta.vercel.app/tweets", options);
+      await fetch("http://localhost:3000/tweets", options);
       setContent("");
       setCount(0);
     }
